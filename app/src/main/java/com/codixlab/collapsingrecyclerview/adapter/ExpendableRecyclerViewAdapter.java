@@ -51,8 +51,11 @@ public class ExpendableRecyclerViewAdapter extends RecyclerView.Adapter<Expendab
 
                 boolean show = toggleLayout(!personList.get(i).isExpanded(), v, holder.bi.layoutExpand);
                 personList.get(i).setExpanded(show);
-                for (int j=0;j!=i;j++){
-                    personList.get(j).setExpanded(false);
+                for (int j=0;j<= personList.size();j++){
+                    if (j!=i){
+                        personList.get(j).setExpanded(false);
+                    }
+
                 }
             }
         });
