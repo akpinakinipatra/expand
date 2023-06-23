@@ -18,7 +18,6 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class ExpendableRecyclerViewAdapter extends RecyclerView.Adapter<ExpendableRecyclerViewAdapter.ViewHolder> {
-
     Context context;
     List<Person> personList;
 
@@ -49,8 +48,12 @@ public class ExpendableRecyclerViewAdapter extends RecyclerView.Adapter<Expendab
             @Override
             public void onClick(View v) {
 
+
                 boolean show = toggleLayout(!personList.get(i).isExpanded(), v, holder.bi.layoutExpand);
                 personList.get(i).setExpanded(show);
+                for (int j=0;j!=i;j++){
+                    personList.get(j).setExpanded(false);
+                }
             }
         });
 
@@ -78,9 +81,7 @@ public class ExpendableRecyclerViewAdapter extends RecyclerView.Adapter<Expendab
 
         public ViewHolder(@NonNull ItemExpandBinding itemView) {
             super(itemView.getRoot());
-
             bi = itemView;
-
         }
     }
 }
